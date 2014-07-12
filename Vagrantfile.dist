@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define "debianbox" do |debianbox|
+
+    # Box 
+    debianbox.vm.box     = "wheezy"
+    debianbox.vm.box_url = "http://files.red-tag.de/vagrant/wheezy.box"
+
+    # Hostname
+    debianbox.vm.hostname = "zs-debian.dev"
+
+    # Message
+    debianbox.vm.post_up_message = "Login: vagrant ssh\nIP: 172.21.7.90"
+
+    # Netzwerk
+    debianbox.ssh.forward_agent = true
+    debianbox.vm.network :private_network, ip: "172.21.7.90"
+
+
+    # Virtualbox settings:
+    debianbox.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 512]
+      v.customize ["modifyvm", :id, "--cpus", 1]
+    end
+
+    # Shell Provisioner for Debian
+    config.vm.provision :shell, :path => "bootstrap-debian.sh"
+
+  end
+end
+
