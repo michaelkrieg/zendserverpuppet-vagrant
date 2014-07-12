@@ -20,3 +20,11 @@ A list of boxes:
 
     vagrant status
 
+Requirements
+------------
+
+Enable ssh agent forwarding and add your key to access the private GIT(lab) repository at zitrone2.red-tag.de:
+
+    ssh-add <path-to-your-key>
+
+
