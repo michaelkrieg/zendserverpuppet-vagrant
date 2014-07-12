@@ -1,0 +1,6 @@
+/Vagrantfile
+/.vagrant
+/.tmp
+/modules/*
+/vm
+.DS_Store
