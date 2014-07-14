@@ -9,3 +9,11 @@ Enable ssh agent forwarding and add your key to access the private GIT(lab) repo
     ssh-add <path-to-your-key>
 
 
+Getting started
+---------------
+
+Copy Vagrantfile.dist to Vagrantfile and then run:
+
+    vagrant up debianbox
+
+
