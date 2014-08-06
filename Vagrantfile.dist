@@ -1,6 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+if Vagrant.has_plugin?('vagrant-vbguest')
+  class GuestAdditionsFixer < VagrantVbguest::Installers::Ubuntu
+    def install(opts=nil, &block)
+      super
+      communicate.sudo('([ -e /opt/VBoxGuestAdditions-4.3.10 ] && sudo ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions) || true')
+    end
+  end
+end
+
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -12,6 +21,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Hostname
     debianbox.vm.hostname = "zs-debian.dev"
+
+    if Vagrant.has_plugin?('vagrant-vbguest')
+      debianbox.vbguest.installer = GuestAdditionsFixer
+    end
 
     # Message
     debianbox.vm.post_up_message = "Login: vagrant ssh\nIP: 172.21.7.90"
