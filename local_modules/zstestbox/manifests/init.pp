@@ -1,0 +1,3 @@
+class zstestbox {
+  class {'zendserver': }
+}

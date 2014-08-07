@@ -42,7 +42,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # Shell Provisioner for Debian
-    config.vm.provision :shell, :path => "bootstrap-debian.sh"
+    debianbox.vm.provision :shell, :path => "bootstrap-debian.sh"
+
+    # Puppet Provisioner
+    debianbox.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.manifest_file  = "site.pp"
+      puppet.options = [
+        "--verbose",
+        "--modulepath=/vagrant/modules:/vagrant/local_modules"]
+    end
 
   end
 end
