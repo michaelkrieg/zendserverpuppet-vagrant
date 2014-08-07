@@ -1,3 +1,3 @@
-mod 'zendserverpuppet',
+mod 'zend_server',
   :git => 'git@github.com:michaelkrieg/ZendServerPuppet.git',
-  :ref => 'master'
+  :ref => 'boilerplate'
