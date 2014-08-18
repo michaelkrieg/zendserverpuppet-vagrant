@@ -23,6 +23,14 @@ A list of boxes:
 
     vagrant status
 
+Boxes
+-----
+
+| Box       | OS variant       | main IP       |
+|-----------|------------------|---------------|
+| debianbox | Debian "Wheezy"  | 172.21.7.90   |
+| trustybox | Ubuntu 14.04 LTS | 172.21.7.91   |
+
 Requirements
 ------------
 

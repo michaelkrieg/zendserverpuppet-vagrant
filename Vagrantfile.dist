@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Message
     debianbox.vm.post_up_message = "Login: vagrant ssh\nIP: 172.21.7.90"
 
-    # Netzwerk
+    # Network
     debianbox.ssh.forward_agent = true
     debianbox.vm.network :private_network, ip: "172.21.7.90"
 
@@ -46,6 +46,48 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Puppet Provisioner
     debianbox.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.manifest_file  = "site.pp"
+      puppet.options = [
+        "--verbose",
+        "--modulepath=/vagrant/modules:/vagrant/local_modules"]
+    end
+
+  end
+
+  config.vm.define "trustybox" do |trustybox|
+
+    # Box 
+    trustybox.vm.box     = "trustry"
+    trustybox.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+
+    # Hostname
+    trustybox.vm.hostname = "zs-trusty.dev"
+
+    if Vagrant.has_plugin?('vagrant-vbguest')
+      trustybox.vbguest.installer = GuestAdditionsFixer
+    end
+
+    # Message
+    trustybox.vm.post_up_message = "Login: vagrant ssh\nIP: 172.21.7.91"
+
+    # Network
+    trustybox.ssh.forward_agent = true
+    trustybox.vm.network :private_network, ip: "172.21.7.91"
+
+
+    # Virtualbox settings:
+    trustybox.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 512]
+      v.customize ["modifyvm", :id, "--cpus", 1]
+    end
+
+    # Shell Provisioner for Debian
+    trustybox.vm.provision :shell, :path => "bootstrap-debian.sh"
+
+    # Puppet Provisioner
+    trustybox.vm.provision :puppet do |puppet|
       puppet.manifests_path = "manifests"
       puppet.manifest_file  = "site.pp"
       puppet.options = [
