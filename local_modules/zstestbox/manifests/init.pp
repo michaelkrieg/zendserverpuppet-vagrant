@@ -1,3 +1,3 @@
 class zstestbox {
-  class {'zendserver': }
+  class {'::zendserver': }
 }
