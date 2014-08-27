@@ -1,0 +1,11 @@
+forge "http://forge.puppetlabs.com"
+
+mod "puppetlabs/stdlib"
+mod "puppetlabs/apt"
+mod "maestrodev/wget"
+mod "puppetlabs/ntp"
+
+mod 'zendserver',
+  :git => 'https://github.com/davidl-zend/ZendServerPuppet.git',
+  :ref => 'master'
+
