@@ -15,8 +15,8 @@ Enable ssh agent forwarding and add your key to access the private GIT(lab) repo
 Getting started
 ---------------
 
-Copy Vagrantfile.dist to Vagrantfile and Puppetfile.dist to Puppetfile 
-
+# Copy Vagrantfile.dist to Vagrantfile and Puppetfile.dist to Puppetfile 
+# Edit data/common.yml and enter the required Zend Server parameters
 and then run:
 
     vagrant up <boxname> ## e.g.: debianbox
