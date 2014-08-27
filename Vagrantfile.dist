@@ -46,6 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Puppet Provisioner
     debianbox.vm.provision :puppet do |puppet|
+      puppet.hiera_config_path = "hiera.yaml"
       puppet.manifests_path = "manifests"
       puppet.manifest_file  = "site.pp"
       puppet.options = [
@@ -88,6 +89,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Puppet Provisioner
     trustybox.vm.provision :puppet do |puppet|
+      puppet.hiera_config_path = "hiera.yaml"
       puppet.manifests_path = "manifests"
       puppet.manifest_file  = "site.pp"
       puppet.options = [

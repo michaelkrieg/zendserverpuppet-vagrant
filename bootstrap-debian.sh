@@ -6,3 +6,6 @@ apt-get update -qq
 
 cd /vagrant && r10k -v info puppetfile install
 
+#Dirty hack to support facter older than version 2.0.1
+mkdir -p /etc/facter/facts.d
+cp -a /vagrant/modules/zendserver/facts.d/* /etc/facter/facts.d
