@@ -3,6 +3,9 @@ zendserver::accept_eula: true
 zendserver::admin_password: '1234'
 zendserver::join_cluster: false
 zendserver::admin_api_key_name: 'admin'
-zendserver::admin_api_key_secret: 'd175b2a6fb6cbe0b7f5b221f36a219be3b2dbe3909faf915bdb719902363d53a'
-zendserver::license_key: '2DRI7340801G21129CC87E03E4091AE2'
 zendserver::license_name: 'tet'
+zendserver::join_cluster: true
+zendserver::db_username: 'puppet'
+zendserver::db_password: 'fsdf8ad0bdfgdf'
+zendserver::db_schema: 'puppetcluster'
+zendserver::db_schema: '10.1.3.79'
