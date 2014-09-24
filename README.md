@@ -17,9 +17,16 @@ Getting started
 
 # Copy Vagrantfile.dist to Vagrantfile and Puppetfile.dist to Puppetfile 
 # Edit data/common.yml and enter the required Zend Server parameters
+
+# In puppet Puppetfile please set the correct git repo from which to pull the module
+#  David Lowes' bleeding edge - https://github.com/davidl-zend/ZendServerPuppet.git (Please use this repo for now)
+#  Relatively stabe - https://github.com/zend-patterns/ZendServerPuppet.git
+
 and then run:
 
-    vagrant up <boxname> ## e.g.: debianbox
+    vagrant up <boxname> ## e.g.: trustybox
+
+
 
 A list of boxes:
 
