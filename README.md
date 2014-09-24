@@ -15,7 +15,8 @@ Enable ssh agent forwarding and add your key to access the private GIT(lab) repo
 Getting started
 ---------------
 
-1. Copy Vagrantfile.dist to Vagrantfile and Puppetfile.dist to Puppetfile 
+1. Copy Vagrantfile.dist to Vagrantfile
+1. Copy Puppetfile.dist to Puppetfile 
 1. Edit data/common.yml and enter the required Zend Server parameters
 1. In puppet Puppetfile please set the correct git repo from which to pull the module:
 
