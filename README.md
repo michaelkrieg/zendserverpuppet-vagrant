@@ -1,15 +1,17 @@
 Vagrant based testboxes for Zend Server Puppet module
 =====================================================
 
+This Vagrant script will setup a box with:
+ - Zend Server - currently joins a cluster and installs the sanity zpk
+ - Mysql
+
+
 Requirements
 ------------
 
     - Vagrant >= 1.6
     - VirtualBox
-
-Enable ssh agent forwarding and add your key to access the private GIT(lab) repository at zitrone2.red-tag.de:
-
-    ssh-add <path-to-your-key>
+    - An internet connection
 
 
 Getting started
@@ -32,10 +34,22 @@ Getting started
     vagrant up <boxname> ## e.g.: trustybox
 
 
-
-A list of boxes:
+# More options
+Get A list of boxes:
 
     vagrant status
+
+SSH into a box (for troubeshooting)
+
+    vagrant ssh
+    
+Reboot a box
+    
+    vagrant reload
+    
+Re-run puppet on a box
+    
+    vagrant reload --provision
 
 Boxes
 -----
