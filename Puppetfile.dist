@@ -6,6 +6,6 @@ mod "maestrodev/wget"
 mod "puppetlabs/ntp"
 
 mod 'zendserver',
-  :git => 'https://github.com/michaelkrieg/ZendServerPuppet.git',
+  :git => 'https://github.com/zend-patterns/ZendServerPuppet.git',
   :ref => 'boilerplate'
 
