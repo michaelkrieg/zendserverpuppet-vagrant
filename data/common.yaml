@@ -5,7 +5,10 @@ zendserver::join_cluster: false
 zendserver::admin_api_key_name: 'admin'
 zendserver::license_name: 'tet'
 zendserver::join_cluster: true
-zendserver::db_username: 'puppet'
-zendserver::db_password: 'fsdf8ad0bdfgdf'
+zendserver::db_username: 'root'
+zendserver::db_password: 'vagrantpassword'
 zendserver::db_schema: 'puppetcluster'
-zendserver::db_schema: '10.1.3.79'
+zendserver::db_host: '127.0.0.1'
+zendserver::license_name: 'puppettest'
+zendserver::license_key: 'FQOK7340801G21CFCA58C27F899AD16E'
+mysql::server::root_password: 'vagrantpassword'

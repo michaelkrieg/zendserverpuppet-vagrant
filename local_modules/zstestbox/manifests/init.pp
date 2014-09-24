@@ -16,6 +16,9 @@ class zstestbox {
     zssecret => $::zend_api_key_hash,
   }
 
+  #Setup local mysql server to test Zend Server cluster
+  include ::mysql::server
+
   file {'/root/.zsapi.ini':
     ensure => link,
     target => '/.zsapi.ini',
