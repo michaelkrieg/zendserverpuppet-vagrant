@@ -62,7 +62,7 @@ Boxes
 Requirements
 ------------
 
-Enable ssh agent forwarding and add your key to access the private GIT(lab) repository at zitrone2.red-tag.de:
+Enable ssh agent forwarding and add your key to access the repository from inside your Vagrant box:
 
     ssh-add <path-to-your-key>
 
