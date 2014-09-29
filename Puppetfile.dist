@@ -4,6 +4,7 @@ mod "puppetlabs/stdlib"
 mod "puppetlabs/apt"
 mod "maestrodev/wget"
 mod "puppetlabs/ntp"
+mod "puppetlabs/mysql", "2.3.1"
 
 mod 'zendserver',
   :git => 'https://github.com/zend-patterns/ZendServerPuppet.git',
