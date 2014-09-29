@@ -8,5 +8,5 @@ mod "puppetlabs/mysql", "2.3.1"
 
 mod 'zendserver',
   :git => 'https://github.com/zend-patterns/ZendServerPuppet.git',
-  :ref => 'boilerplate'
+  :ref => 'master'
 
