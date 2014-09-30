@@ -54,10 +54,11 @@ Re-run puppet on a box
 Boxes
 -----
 
-| Box       | OS variant       | main IP       |
-|-----------|------------------|---------------|
-| debianbox | Debian "Wheezy"  | 172.21.7.90   |
-| trustybox | Ubuntu 14.04 LTS | 172.21.7.91   |
+| Box         | OS variant       | main IP       |
+|-------------|------------------|---------------|
+| debianbox   | Debian "Wheezy"  | 172.21.7.90   |
+| trustybox   | Ubuntu 14.04 LTS | 172.21.7.91   |
+| centos64box | CentOS 6.4       | 172.21.7.92   |
 
 Requirements
 ------------

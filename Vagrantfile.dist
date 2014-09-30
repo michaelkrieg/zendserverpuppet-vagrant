@@ -55,7 +55,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
   end
-
   config.vm.define "trustybox" do |trustybox|
 
     # Box 
@@ -89,6 +88,49 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Puppet Provisioner
     trustybox.vm.provision :puppet do |puppet|
+      puppet.hiera_config_path = "hiera.yaml"
+      puppet.manifests_path = "manifests"
+      puppet.manifest_file  = "site.pp"
+      puppet.options = [
+        "--verbose",
+        "--modulepath=/vagrant/modules:/vagrant/local_modules"]
+    end
+
+  end
+
+  config.vm.define "centos64box" do |centos64box|
+
+    # Box 
+    centos64box.vm.box     = "centos64"
+    centos64box.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box"
+
+    # Hostname
+    centos64box.vm.hostname = "zs-centos64.dev"
+
+    if Vagrant.has_plugin?('vagrant-vbguest')
+      centos64box.vbguest.installer = GuestAdditionsFixer
+    end
+
+    # Message
+    centos64box.vm.post_up_message = "Login: vagrant ssh\nIP: 172.21.7.92"
+
+    # Network
+    centos64box.ssh.forward_agent = true
+    centos64box.vm.network :private_network, ip: "172.21.7.92"
+
+
+    # Virtualbox settings:
+    centos64box.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 512]
+      v.customize ["modifyvm", :id, "--cpus", 1]
+    end
+
+    # Shell Provisioner for Debian
+    centos64box.vm.provision :shell, :path => "bootstrap-centos.sh"
+
+    # Puppet Provisioner
+    centos64box.vm.provision :puppet do |puppet|
       puppet.hiera_config_path = "hiera.yaml"
       puppet.manifests_path = "manifests"
       puppet.manifest_file  = "site.pp"
