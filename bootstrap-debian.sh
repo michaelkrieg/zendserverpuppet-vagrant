@@ -15,7 +15,7 @@ fi
 apt-get update -qq && apt-get autoremove -qq
 apt-get install -y -q puppet
 [ -x /usr/bin/git ] || apt-get install -y -q git
-[ -x /opt/vagrant_ruby/bin/r10k ] || gem install --no-rdoc --no-ri r10k
+[ -x /opt/vagrant_ruby/bin/r10k ] || gem install --quiet --no-rdoc --no-ri r10k 1>/dev/null
 
 cd /vagrant && r10k -v info puppetfile install
 
