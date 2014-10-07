@@ -7,7 +7,9 @@ yum install puppet -y
 #sudo yum install -y puppet
 
 [ -x /usr/bin/git ] || yum install -y -q git
-[ -x /opt/vagrant_ruby/bin/r10k ] || gem install --no-rdoc --no-ri r10k
+
+gem list system_timer -i 1>/dev/null || gem install --no-rdoc --no-ri system_timer
+gem list r10k -i 1>/dev/null || gem install --no-rdoc --no-ri r10k
 
 cd /vagrant && r10k -v info puppetfile install
 
