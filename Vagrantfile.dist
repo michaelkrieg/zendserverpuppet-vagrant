@@ -108,7 +108,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     centos64box.vm.hostname = "zs-centos64.dev"
 
     if Vagrant.has_plugin?('vagrant-vbguest')
-      centos64box.vbguest.installer = GuestAdditionsFixer
+      centos64box.vbguest.auto_update = false
     end
 
     # Message
