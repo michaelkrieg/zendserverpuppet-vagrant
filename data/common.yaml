@@ -1,7 +1,6 @@
 ---
 zendserver::accept_eula: true
 zendserver::admin_password: '1234'
-zendserver::join_cluster: false
 zendserver::admin_api_key_name: 'admin'
 zendserver::license_name: 'tet'
 zendserver::join_cluster: true
