@@ -2,7 +2,7 @@
 
 #Obtain puppet from puppetlabs
 sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
-yum install puppet -y
+yum install puppet hiera -y
 
 #sudo yum install -y puppet
 
