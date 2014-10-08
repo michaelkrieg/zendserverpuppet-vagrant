@@ -63,13 +63,13 @@ Boxes defined in Vagrantfile.dist
 Boxes defined in Vagrantfile.dist-CentOS-Cluster
 ------------------------------------------------
 
-There are 3 CentOS boxes prepared for building a test cluster setup:
+There are 3 CentOS boxes prepared for building a test cluster setup. To use it, just copy the Vagrantfile.dist-CentOS-Cluster to Vagrantfile followed by a "vagrant up":
 
 | Box         | OS variant       | main IP       |
 |-------------|------------------|---------------|
 | zsc1        | CentOS 6.4       | 172.21.7.11   |
-| zsc2        | CentOS 6.4       |    |
-| zsc3        | CentOS 6.4       |    |
+| zsc2        | CentOS 6.4       | 172.21.7.12   |
+| zsc3        | CentOS 6.4       | 172.21.7.13   |
 
 Requirements
 ------------
