@@ -1,0 +1,65 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.6.3"
+
+
+
+VAGRANTFILE_API_VERSION = "2"
+
+INSTANCES=3
+DOMAIN="zs.cluster.local"
+MEMORY=512
+SUBNET="172.21.7"
+
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+###
+###
+### CentOS Test Cluster
+###
+###
+
+  INSTANCES.times do |i|
+    config.vm.define "zsc#{i + 1}".to_sym do |centos64box|
+
+      # Box 
+      centos64box.vm.box     = "centos64"
+      centos64box.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box"
+
+      if Vagrant.has_plugin?('vagrant-vbguest')
+        centos64box.vbguest.auto_update = false
+      end
+
+
+      # Network
+      centos64box.ssh.forward_agent = true
+      centos64box.vm.network :private_network, ip: "#{SUBNET}.%d" % (10 + i + 1)
+      centos64box.vm.host_name = "zsc#{i + 1}.#{DOMAIN}"
+
+
+      # Virtualbox settings:
+      centos64box.vm.provider :virtualbox do |v|
+        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        v.customize ["modifyvm", :id, "--memory", MEMORY]
+        v.customize ["modifyvm", :id, "--cpus", 1]
+      end
+
+      # Shell Provisioner for Debian
+      centos64box.vm.provision :shell, :path => "bootstrap-centos.sh"
+
+      # Puppet Provisioner
+      centos64box.vm.provision :puppet do |puppet|
+        puppet.hiera_config_path = "hiera.yaml"
+        puppet.manifests_path = "manifests"
+        puppet.manifest_file  = "site.pp"
+        puppet.options = [
+          "--verbose",
+          "--modulepath=/vagrant/modules:/vagrant/local_modules"]
+      end
+
+    end
+  end ## cluster loop
+end
+

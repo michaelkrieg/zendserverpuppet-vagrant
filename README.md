@@ -51,14 +51,25 @@ Re-run puppet on a box
     
     vagrant reload --provision
 
-Boxes
------
+Boxes defined in Vagrantfile.dist
+---------------------------------
 
 | Box         | OS variant       | main IP       |
 |-------------|------------------|---------------|
 | debianbox   | Debian "Wheezy"  | 172.21.7.90   |
 | trustybox   | Ubuntu 14.04 LTS | 172.21.7.91   |
 | centos64box | CentOS 6.4       | 172.21.7.92   |
+
+Boxes defined in Vagrantfile.dist-CentOS-Cluster
+------------------------------------------------
+
+There are 3 CentOS boxes prepared for building a test cluster setup:
+
+| Box         | OS variant       | main IP       |
+|-------------|------------------|---------------|
+| zsc1        | CentOS 6.4       | 172.21.7.11   |
+| zsc2        | CentOS 6.4       |    |
+| zsc3        | CentOS 6.4       |    |
 
 Requirements
 ------------
